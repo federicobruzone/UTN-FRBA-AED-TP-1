@@ -26,8 +26,7 @@ bool menu()
 	using std::endl;
 	
 	int opcion; 
-	void stringAChar();
-		
+
 	cout << "********** Menu Principal **********" << endl;
 	cout << "(1): Mostrar valores de bool" << endl;
 	cout << "(2): Mostrar valores de char" << endl;
