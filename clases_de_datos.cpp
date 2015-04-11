@@ -6,8 +6,8 @@
 
 #include <iostream>
 
-void imprimBanner(){ // Esta función imprime un banner en pantalla
-
+void imprimBanner() // Esta función imprime un banner en pantalla
+{
 	using std::cout;
 	using std::endl;
 
@@ -19,7 +19,7 @@ void imprimBanner(){ // Esta función imprime un banner en pantalla
 	
 }
 
-bool menu()
+bool menu() // Esta función despliega un menú de opciones
 {
 	using std::cout;
 	using std::cin;
@@ -34,16 +34,16 @@ bool menu()
 	cout << "(4): Adicionar dos int entre si" << endl;
 	cout << "(5): Dividir dos double entre si" << endl;
 	cout << "(0): Para terminar el programa" << endl;
-	cin >> opcion;
+	cin >> opcion; //Requiere la entrada de un int. Otro tipo de entrada provoca un comportamiento erróneo.
 			
 	switch(opcion){
 		case 1:
 			bool esonoes;
 			esonoes = false;
 			cout << "\n";
-			cout << std::boolalpha << esonoes << " o ";
-			esonoes = ~esonoes;
-			cout << std::boolalpha << esonoes << endl;
+			cout << std::boolalpha << esonoes << " o "; // la función boolalpha expresa los booleanos como 
+			esonoes = ~esonoes; 			    // true o false.
+			cout << std::boolalpha << esonoes << endl; // ~esonoes aquí haría que el display sea "1"
 			cout << "\n";
 			break;
 		
@@ -54,8 +54,8 @@ bool menu()
 			for (int n = 0; n < 128; n++)
 			{
 				letra = n;
-				cout << letra << " ";
-			}
+				cout << letra << " "; //algunos de los caracteres iniciales del grupo ASCII no se 
+			}			      // representan en pantalla
 			cout << endl << "\n";
 			break;
 			
@@ -64,15 +64,11 @@ bool menu()
 			
 			cout << "\n";		
 			cout << "Ingrese la cadena que desea descomponer en char: ";
-			cin.ignore();
-			std::getline (cin, cadena);
+			cin.ignore(); 			// esta línea despeja el caracter de retorno remanente 
+			std::getline (cin, cadena);     // de la última instrucción cin.
 			cout << "\n";
-	
-			for (char c : cadena)
-			{
-			cout << c << " ";
-			}
-		
+			// esta instrucción se repite para cada uno de los elementos del string	
+			for (char c : cadena) {cout << c << " ";}
 			cout << endl << "\n";
 			break;
 		}
@@ -100,10 +96,10 @@ bool menu()
 			break;
 				
 		case 0:
-			return 0;
+			return 0; //retorna 0 a main, interrumpiendo el ciclo que llama a la función menu()
 			break;
 				
-		default:
+		default:  //el switch salta a esta posicion cuando la entrada es un valor distinto de 1-5 , 0
 			cout << "\n";
 			cout << "Comando desconocido" << endl;
 			cout << "\n";
@@ -116,10 +112,9 @@ bool menu()
 
 int main() {
 
-using namespace std;
-
 	imprimBanner();
-
+	
+	// Llama a la función menu() en un ciclo infinito pero interrumpible
 	bool ciclo = 1;
 	while (ciclo == 1) {
 		ciclo = menu();
